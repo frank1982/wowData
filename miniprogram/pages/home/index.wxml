@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<view class="container">
+<loading hidden="{{loadingShow}}">
+    加载中...
+</loading>
+  <view id="topView">
+    <view id="bannerView">
+      <view id="iconView">
+       <image id="iconImage" src="../../images/icon.png"></image>
+      </view>
+      <view id="rightView">  
+        <text class="title">经典怀旧数据统计</text>
+      </view>
+    </view>
+    <view id="wordsView">
+      <text id="words">{{indexWord}}</text>
+    </view>
+  </view>
+  <!--跨服务器总人口对比-->
+  <view id="countTotalView">
+    <view id="popTitleView">
+      <view id="popLeftView">在线人数</view>
+      <view id="popRightView">{{totalCount.totalPop}}</view>
+    </view>
+    <view class="campView">
+      <view class="popCanvasView">
+        <canvas class="popCanvas" canvas-id='1000'></canvas>
+      </view>
+      <view class="popShareView">
+         <view class="popShareTxt">{{totalCount.share_alliance}}%</view>
+      </view>
+    </view>
+    <view class="campView">
+      <view class="popCanvasView">
+         <canvas class="popCanvas" canvas-id='1001'></canvas>
+      </view>
+      <view class="popShareView">
+         <view class="popShareTxt">{{totalCount.share_horde}}%</view>
+      </view>
+    </view>
+  </view>
+  <view id="btnArea">
+    <view class='btn' wx:for="{{btnList}}" bindtap="clickBtn" data-no="{{item.btnNo}}">
+      <text class="btnTitle" style="color:{{item.bgColor}}">{{item.btnName}}</text>
+    </view>
+    
+   
+  </view>
+  <view id="listView" >
+  <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item.serverName}}">
+    <view class="itemTopView">
+      <view class="leftLabel">
+          <text id="txtServerName">{{item.serverName}}</text>
+      </view>
+      <view class="rightLabel">
+          <text id="txtPop">{{item.population}}</text>
+      </view>
+    </view>
+    <view class="itemMidView">
+      <view class="progressView">
+           <canvas class="mycanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
+        </view>
+      <view class="dateView">
+           <text class="txtRate">{{item.rateNum}}</text>
+        </view>  
+    </view>
+  </view>
+  </view>
+  <view id="endView">
+    <text id="endTxt">经典同在 体验精彩</text>
+  </view>
+</view>
+
+
