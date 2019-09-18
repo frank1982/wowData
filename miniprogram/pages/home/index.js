@@ -8,6 +8,7 @@ Page({
     loadingShow:false,
     totalCount:{},
     indexWord:"",
+    pv:0,
     btnList:[
       {
         btnName:"人口",
@@ -70,6 +71,35 @@ Page({
         indexWord: res.data[0].content,
       })
     }),
+    //const db = wx.cloud.database()
+    //const _ = db.command
+    db.collection('words').where({
+      _id: "pvs"
+    })
+      .get()
+      .then(res => {
+        console.log(res.data[0].pv)
+        this.setData({
+          pv: res.data[0].pv,
+        })
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'updatePv',
+          // 传给云函数的参数
+          data: {
+            pvnum: res.data[0].pv + 1
+          },
+          success: function (res) {
+            console.log(res)
+          },
+          fail: console.error
+        })
+      })
+    console.log(this.data.pv)  
+  
+    
+
+
     wx.cloud.callFunction({
       // 需调用的云函数名
       name: 'getAllPopRecords',

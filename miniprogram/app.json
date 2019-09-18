@@ -14,7 +14,7 @@
     "backgroundColor": "#F5F5F5",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "魔兽怀旧人口统计",
+    "navigationBarTitleText": "小程序 魔兽人口",
     "navigationBarTextStyle": "black"
   }
 }

@@ -148,6 +148,11 @@ page {
 .raceNameTxt{
   margin-left: 25rpx;
 }
+.raceImg{
+  height:60rpx;
+  width:60rpx;
+  margin-left: 25rpx;
+}
 .raceCanvasView{
   height:100rpx;
   width:390rpx;
@@ -212,6 +217,11 @@ page {
 }
 .profNameTxt{
   margin-left: 25rpx;
+}
+.profImg{
+  margin-left: 25rpx;
+  height:60rpx;
+  width:60rpx;
 }
 .profCanvasView{
   height:100rpx;

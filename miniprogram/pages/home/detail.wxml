@@ -27,7 +27,14 @@
       </view>
     </view>
     <view wx:for="{{raceOnShow}}" class="raceItemView">
-      <view class="raceNameView"><text class="raceNameTxt" style="color:{{txtColor.raceNameTxtColor}}">{{item.raceName}}</text></view>
+      <view class="raceNameView">
+        <!--
+        <text class="raceNameTxt" style="color:{{txtColor.raceNameTxtColor}}">{{item.raceName}}</text>
+        -->
+        
+        <image class="raceImg" src='../../images/skins/{{item.raceName}}.png'></image>
+        
+      </view>
       <view class="raceCanvasView">
         <canvas class="raceCanvas" canvas-id="{{canvasList_race[index]}}"></canvas>
       </view>
@@ -49,7 +56,10 @@
     </view>
     <view wx:for="{{professionOnShow}}" class="professionItemView">
       <view class="profNameView">
+        <!--
         <text class="profNameTxt" style="color:{{txtColor.raceNameTxtColor}}">{{item.profName}}</text>
+        -->
+        <image class="profImg" src='../../images/skins/{{item.profName}}.png'></image>
       </view>
       <view class="profCanvasView">
         <canvas class="profCanvas" canvas-id="{{canvasList_prof[index]}}"></canvas>

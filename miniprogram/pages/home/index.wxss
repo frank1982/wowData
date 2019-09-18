@@ -37,11 +37,25 @@ page {
 }
 #rightView{
   height: 180rpx;
-  width: 500rpx;
+  width: 380rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  
+}
+#rightImgView{
+  height:180rpx;
+  width:120rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+#footImg{
+  height:45rpx;
+  width:45rpx;
 }
 /*
 #topRightView{

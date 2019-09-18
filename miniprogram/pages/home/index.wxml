@@ -9,7 +9,10 @@
        <image id="iconImage" src="../../images/icon.png"></image>
       </view>
       <view id="rightView">  
-        <text class="title">经典怀旧数据统计</text>
+        <text class="title">{{pv}} 位玩家来过</text>
+      </view>
+      <view id="rightImgView">  
+        <image id="footImg" src="../../images/foot.png"></image>
       </view>
     </view>
     <view id="wordsView">
