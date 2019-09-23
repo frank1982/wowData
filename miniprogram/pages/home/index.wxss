@@ -1,10 +1,9 @@
 page {
-  background: #F5F5F5;
+  background: #f6f6f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-
 #topView{
   background:#FFFFFF;
   height: 260rpx;
@@ -57,22 +56,6 @@ page {
   height:45rpx;
   width:45rpx;
 }
-/*
-#topRightView{
-  height: 100rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-#bottomRightView{
-  height: 100rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-*/
 .title{
   font-size:larger;
   color: #d2b576;
@@ -94,16 +77,15 @@ page {
   width:100%;
   background-color: white;
   margin-top: 20rpx;
-
 }
-#popTitleView{
+#ahTitleView{
   height:100rpx;
   width:100%;
   display: flex;
   justify-content: center;
   
 }
-#popLeftView{
+#ahLeftView{
   height:100rpx;
   width:50%;
   display: flex;
@@ -113,7 +95,7 @@ page {
   padding-left: 25rpx;
   color:#696969;
 }
-#popRightView{
+#ahRightView{
   height:100rpx;
   width:50%;
   display: flex;
@@ -129,7 +111,7 @@ page {
   display: flex;
   justify-content: center;
 }
-.popCanvasView{
+.ahCanvasView{
   height:80rpx;
   width:550rpx;
   display: flex;
@@ -139,12 +121,24 @@ page {
   padding-left: 25rpx;
   /*子视图垂直水平左对齐*/
 }
-
-.popCanvas{
+.headImgView{
   height:60rpx;
-  width:525rpx;
+  width:75rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
 }
-.popShareView{
+.headImg{
+  height:45rpx;
+  width:45rpx;
+}
+.ahCanvas{
+  height:60rpx;
+  width:450rpx;
+}
+.ahShareView{
   height:80rpx;
   width:200rpx;
   display: flex;
@@ -155,7 +149,7 @@ page {
   /*子视图垂直水平居中*/
   
 }
-.popShareTxt{
+.ahShareTxt{
   border-radius: 6rpx;
   background-color: #051041;
   height:60rpx;
@@ -186,9 +180,6 @@ page {
 .btnTitle{
   font-size:small;
 }
-#listView{
-  
-}
 .itemView{
   height:160rpx;
   width: 750rpx;
@@ -209,9 +200,6 @@ page {
   justify-content: center;
   flex-direction: column;
 }
-.txtServerName{
-
-}
 
 .rightLabel{
   width: 350rpx;
@@ -221,7 +209,6 @@ page {
   align-items: center;
   /*子视图右对齐*/
 }
-
 .itemMidView{
   height:60rpx;
   display: flex;
@@ -232,10 +219,12 @@ page {
 .progressView{
   width:530rpx;
   height:30rpx;
+  display: flex;
+  justify-content: center;
 }
 .mycanvas{
-  width:530rpx;
-  height:60rpx;
+ height:60rpx;
+ width:450rpx;
 }
 .dateView{
   background-color: #051041;
@@ -269,3 +258,4 @@ page {
 #endTxt{
   color:#d2b576;
 }
+
