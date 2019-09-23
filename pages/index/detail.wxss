@@ -1,0 +1,328 @@
+page {
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+#campView{
+  background-color: white;
+  height:100rpx;
+  width:750rpx;
+  display: flex;
+  justify-content: center;
+  position:fixed;
+  top:0;
+  z-index:99;
+ 
+
+}
+#allianceChooseView{
+  height:100rpx;
+  width:325rpx;
+  display: flex;
+  margin-left: 25rpx;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+  border-radius: 6rpx;
+
+}
+#hordeChooseView{
+  margin-left: 50rpx;
+  margin-right: 25rpx;
+  height:100rpx;
+  width:325rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+  border-radius: 6rpx;
+}
+#allianceTxt{
+
+}
+#hordeTxt{
+
+}
+#infoView{
+  width:100%;
+  height:80rpx;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  margin-top: 110rpx;
+}
+#leftInfoView{
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直居中左对齐*/
+}
+#rightInfoView{
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-right:25rpx; 
+  color: #696969;
+}
+#popArea{
+  background-color: #051041;
+  margin-left: 25rpx;
+  width:180rpx;
+  height:60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 6rpx;
+  /*子视图垂直居中左对齐*/
+}
+#populationTxt{
+  color:#d2b576;
+  margin-left: 20rpx;
+}
+#raceView{
+  height:500rpx;
+  width:100%;
+  margin-top: 10rpx;
+  background-color: white; 
+}
+#raceTitleView{
+  height:100rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  /*子视图平行*/
+}
+.leftTitleView{
+  height:100rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直居中左对齐*/
+}
+.rightTitleView{
+  height:100rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  /*子视图垂直居中右对齐*/
+}
+.leftTitleTxt{
+  margin-left: 25rpx;
+  color: #696969;
+}
+.rightTitleTxt{
+  margin-right: 25rpx;
+  color: #696969;
+}
+.raceItemView{
+  height:100rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.raceNameView{
+  height:100rpx;
+  width:180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 6rpx;
+  /*子视图垂直居中左对齐*/
+}
+.raceNameTxt{
+  margin-left: 25rpx;
+}
+.raceCanvasView{
+  height:100rpx;
+  width:390rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+   /*子视图垂直居中右对齐*/
+}
+.raceRateView{
+  height:100rpx;
+  width:180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+   /*子视图垂直居中右对齐*/
+}
+.raceRateViewBg{
+  background-color:#051041;
+  height:60rpx;
+  width:135rpx;
+  border-radius: 6rpx;
+  margin-right: 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 6rpx;
+  /*子视图右对齐*/
+}
+.raceRateTxt{
+  color:#d2b576;
+  margin-right: 20rpx;
+}
+.raceCanvas{
+  width:390rpx;
+  height:60rpx;
+  z-index:1;
+}
+#professionView{
+  height:900rpx;
+  width:100%;
+  margin-top: 10rpx;
+  background-color: white; 
+}
+.professionItemView{
+  height:100rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.profNameView{
+  height:100rpx;
+  width:180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 6rpx;
+  /*子视图垂直居中左对齐*/
+}
+.profNameTxt{
+  margin-left: 25rpx;
+}
+.profCanvasView{
+  height:100rpx;
+  width:390rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  /*子视图垂直居中右对齐*/
+}
+.profRateView{
+  height:100rpx;
+  width:180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  /*子视图垂直居中右对齐*/
+}
+.profRateViewBg{
+  background-color:#051041;
+  height:60rpx;
+  width:135rpx;
+  border-radius: 6rpx;
+  margin-right: 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 6rpx;
+  /*子视图右对齐*/
+}
+.profRateTxt{
+  color:#d2b576;
+  margin-right: 20rpx;
+}
+.profCanvas{
+  width:390rpx;
+  height:60rpx;
+}
+#picView{
+  
+  height: 200rpx;
+  width:100%;
+  margin-top: 10rpx;
+  background-color: white;
+  display: flex;
+  justify-content:center;
+}
+#leftPicView{
+  height:200rpx;
+  width:300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直居中右对齐*/
+}
+#rightPicView{
+  height:200rpx;
+  width:450rpx;
+}
+#img{
+  height:160rpx;
+  width:260rpx;
+  border-radius: 6rpx;
+}
+#topPicTxt{
+  margin-top: 20rpx;
+  height:80rpx;
+  width:430rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 6rpx;
+  /*子视图右对齐*/
+}
+#bottomPicTxt{
+
+  height:80rpx;
+  width:430rpx;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 6rpx;
+  /*子视图右对齐*/
+}
+.picUpdateTime{
+  color: #696969;
+  margin-left: 20rpx;
+  font-size: small;
+}
+#noshowView{
+  height:300rpx;
+  width:100%;
+  margin-top: 250rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#alertImg{
+  height:150rpx;
+  width:150rpx;
+}
+#noshowTxt{
+  color:#696969;
+  margin-top:20rpx;
+}

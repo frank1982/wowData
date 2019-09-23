@@ -1,0 +1,63 @@
+page {
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+#topView{
+  height:100rpx;
+  width:100%;
+  display: flex;  
+  justify-content: flex-start;
+  background-color: white;
+}
+#leftTopView{
+   height:100rpx;
+   width:50%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+}
+#rightTopView{
+   height:100rpx;
+   width:50%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+}
+#leftTxt{
+  margin-left: 25rpx;
+  color: #0079FF;
+}
+.GoodsTxt{
+  background-color: #051041;
+  color: #d2b576;
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+  border-radius: 6rpx;
+}
+#rightTxt{
+  margin-left: 25rpx;
+  color: #D50000;
+}
+#infoView{
+  height: 80rpx;
+  width:100%;
+  margin-top: 20rpx;
+  background-color: white;
+
+}
+#infoTxt{
+  color: #696969;
+  margin-left: 25rpx;
+  font-size: small;
+}
+#bottomView{
+  width:100%;
+  margin-top: 20rpx;
+}
+.img{
+  width:100%;
+}
