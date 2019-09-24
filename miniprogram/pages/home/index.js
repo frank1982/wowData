@@ -31,8 +31,8 @@ Page({
         btnNo: 3,
       },
     ], 
-    serverInfoOnShow: [], //serverName //goodsNum //rateNum
-    //canvas_ids: ["500", "501", "502"],
+    btnSelected: 0,
+    serverInfoOnShow: [],
     canvas_ids: []
   },
 
@@ -115,7 +115,7 @@ Page({
       server["goods_horde"] = results[i].goods_horde
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
       server["rate"] = (results[i].goods_alliance / results[i].goods_horde).toFixed(1);
-      if (server["rate"] > 1 && server["rate"] < 100) {
+      if (server["rate"] > 1 && server["rate"] < 10) {
         //处理下 3.0的情况
         var numStr = server["rate"] + ""
         var endWord = numStr.substr(numStr.length - 1, numStr.length)
@@ -123,9 +123,9 @@ Page({
           numStr = numStr.substr(0, numStr.length - 2)
         }
         server["rateNum"] = numStr + ":1"
-      } else if (server["rate"] >= 100){
-        server["rateNum"] = "100+:1" 
-      } else if (server["rate"] < 1 && server["rate"] > 0.01){
+      } else if (server["rate"] >= 10){
+        server["rateNum"] = "10+:1" 
+      } else if (server["rate"] < 1 && server["rate"] > 0.1){
         var x = (1 / server["rate"]).toFixed(1)
         //处理下 3.0的情况
         var numStr = x + ""
@@ -135,8 +135,8 @@ Page({
           numStr = numStr.substr(0, numStr.length - 2)
         }
         server["rateNum"] = "1:" + numStr
-      } else if (server["rate"] < 0.01) {
-        server["rateNum"] = "1:100+"
+      } else if (server["rate"] < 0.1) {
+        server["rateNum"] = "1:10+"
       } else if (server["rate"] == 1) {
         server["rateNum"] = "1:1"
       }

@@ -1,5 +1,0 @@
-.myCanvas{
-  width:530rpx;
-  height:60rpx;
-  background-color: gray;
-}

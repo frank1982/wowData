@@ -1,5 +1,0 @@
-<view wx:for="{{mydata}}" class="oneview">
-  <text>"{{item.name}}"</text>
-  <canvas class="myCanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
-</view>
-<button bindtap="click">change</button>

@@ -16,7 +16,7 @@
     <text id="infoTxt">{{updateTime}}</text>
   </view>
   <view id="bottomView">
-    <image class="img" src='{{img0}}' bindload="imageLoad0" mode="aspectFit"></image>
-    <image class="img" src='{{img1}}' bindload="imageLoad1" mode="aspectFit"></image>
+    <image id="img0" src='{{img0}}' bindload="imageLoad0" mode="aspectFit"></image>
+    <image id="img1" src='{{img1}}' bindload="imageLoad1" mode="aspectFit"></image>
   </view>
 </view>
