@@ -59,10 +59,16 @@ page {
   margin-top: 20rpx;
 }
 #img0{
-  width:750rpx;
+  width:730rpx;
   border-radius: 30rpx;
+  border-width:10rpx;
+  border-color: #0079FF;
+  border-style: solid;
 }
 #img1{
-  width:750rpx;
+  width:730rpx;
   border-radius: 30rpx;
+  border-width:10rpx;
+  border-color: #D50000;
+  border-style: solid;
 }

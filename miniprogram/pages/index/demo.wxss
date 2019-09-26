@@ -1,0 +1,9 @@
+#img{
+  height:500rpx;
+  width:700rpx;
+  border-width: 50px;
+  border-color: red;
+  border-style: solid;  
+  border-radius: 50rpx;
+  background-color: gray;
+}

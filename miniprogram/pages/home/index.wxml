@@ -22,8 +22,8 @@
 
   <view id="countTotalView">
     <view id="ahTitleView">
-      <view id="ahLeftView">拍卖物品总数</view>
-      <view id="ahRightView">{{totalCount.totalAh}}</view>
+      <view id="ahLeftView">拍卖物品总比例</view>
+      <view id="ahRightView">服务器 {{serversCount}} 组</view>
     </view>
     <view class="campView">
       <view class="ahCanvasView">
@@ -51,13 +51,13 @@
 
   
   </view>
-<!--
+
 <view id="btnArea">
     <view class='btn' wx:for="{{btnList}}" bindtap="clickBtn" data-no="{{item.btnNo}}">
       <text class="btnTitle" style="color:{{item.bgColor}}">{{item.btnName}}</text>
     </view>
 </view>
--->
+
 <view id="listView" >
   <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item.serverName}}">
     <view class="itemTopView">

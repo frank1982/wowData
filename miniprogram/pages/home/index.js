@@ -8,7 +8,7 @@ Page({
     loadingShow: false,
     pv: 0,
     indexWord: "",
-    totalCount: {},
+    serversCount: "",
     btnList: [
       {
         btnName: "物资",
@@ -40,7 +40,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
+    this.initBtns(0)
     const db = wx.cloud.database()
     db.collection('words').where({
       _id: "pvs"
@@ -86,7 +87,7 @@ Page({
         var results = res.result.data
         this.setData({
           loadingShow: true,
-
+          serversCount: results.length
         })
         console.log(results)
         console.log("共 " + results.length + " 条服务器goods信息")
@@ -96,6 +97,19 @@ Page({
       },
     })
 
+  },
+  initBtns: function (no) {
+    var tmp = this.data.btnList
+    for (var i = 0; i < tmp.length; i++) {
+      if (i == no) {
+        tmp[i].bgColor = "#000000"
+      } else {
+        tmp[i].bgColor = "#696969"
+      }
+    }
+    this.setData({
+      btnList: tmp,
+    })
   },
   initServerInfo: function (results) {
 
@@ -295,8 +309,136 @@ Page({
       ctx.draw();
     }
   },
-  clickBtn:function(){
+  clickBtn: function (e) {
+
     console.log("click btn")
+    var no = e.currentTarget.dataset.no;
+    console.log(no);
+    this.initBtns(no)
+    if (no == 0) {//人口
+      if (this.data.btnSelected != 0) {
+        this.setData({
+          btnSelected: 0,
+        })
+        //按总人口排名
+        var tmp = this.data.serverInfoOnShow
+        //console.log(serverInfoList)
+        for (var wai = 0; wai < tmp.length - 1; wai++) {
+
+          //2.内部循环 保证 了 最大值 被 移动到最后
+          for (var wei = 0; wei < tmp.length - 1; wei++) {
+
+            if (tmp[wei].totalGoods < tmp[wei + 1].totalGoods) {
+              // 使用 临时变量 的方式，交换两个 元素的值 -> 交换两个变量的值
+              var sum = tmp[wei];
+              tmp[wei] = tmp[wei + 1];
+              tmp[wei + 1] = sum;
+            }
+
+          }
+
+        }
+
+        this.setData({
+          serverInfoOnShow: tmp,
+        });
+        this.drawBar()
+
+      }
+
+    } else if (no == 1) {//联盟
+      if (this.data.btnSelected != 1) {
+        this.setData({
+          btnSelected: 1,
+        })
+
+        //this.clearBars();
+        //按联盟人口排名
+        var tmp = this.data.serverInfoOnShow
+        //console.log(serverInfoList)
+        for (var wai = 0; wai < tmp.length - 1; wai++) {
+
+          //2.内部循环 保证 了 最大值 被 移动到最后
+          for (var wei = 0; wei < tmp.length - 1; wei++) {
+
+            if (tmp[wei].goods_alliance < tmp[wei + 1].goods_alliance) {
+              // 使用 临时变量 的方式，交换两个 元素的值 -> 交换两个变量的值
+              var sum = tmp[wei];
+              tmp[wei] = tmp[wei + 1];
+              tmp[wei + 1] = sum;
+            }
+
+          }
+
+        }
+
+        this.setData({
+          serverInfoOnShow: tmp,
+        });
+        this.drawBar()
+      }
+
+    } else if (no == 2) {//部落
+      if (this.data.btnSelected != 2) {
+        this.setData({
+          btnSelected: 2,
+        })
+        //按部落人口排名
+        var tmp = this.data.serverInfoOnShow
+        //console.log(serverInfoList)
+        for (var wai = 0; wai < tmp.length - 1; wai++) {
+
+          //2.内部循环 保证 了 最大值 被 移动到最后
+          for (var wei = 0; wei < tmp.length - 1; wei++) {
+
+            if (tmp[wei].goods_horde < tmp[wei + 1].goods_horde) {
+              // 使用 临时变量 的方式，交换两个 元素的值 -> 交换两个变量的值
+              var sum = tmp[wei];
+              tmp[wei] = tmp[wei + 1];
+              tmp[wei + 1] = sum;
+            }
+
+          }
+
+        }
+
+        this.setData({
+          serverInfoOnShow: tmp,
+        });
+        this.drawBar()
+      }
+
+
+    } else {//比例
+      if (this.data.btnSelected != 3) {
+        this.setData({
+          btnSelected: 3,
+        })
+        //按比例排名
+        var tmp = this.data.serverInfoOnShow
+        //console.log(serverInfoList)
+        for (var wai = 0; wai < tmp.length - 1; wai++) {
+
+          //2.内部循环 保证 了 最大值 被 移动到最后
+          for (var wei = 0; wei < tmp.length - 1; wei++) {
+
+            if (tmp[wei].rate < tmp[wei + 1].rate) {
+              // 使用 临时变量 的方式，交换两个 元素的值 -> 交换两个变量的值
+              var sum = tmp[wei];
+              tmp[wei] = tmp[wei + 1];
+              tmp[wei + 1] = sum;
+            }
+
+          }
+
+        }
+
+        this.setData({
+          serverInfoOnShow: tmp,
+        });
+        this.drawBar()
+      }
+    }
   },
   roundRect(ctx, x, y, w, h, r, c = '#fff') {
     if (w < 2 * r) { r = w / 2; }
