@@ -1,8 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-<loading hidden="{{loadingShow}}">
-    加载中...
-</loading>
+
   <view id="topView">
     <view id="bannerView">
       <view id="iconView">
@@ -46,6 +44,9 @@
   <view id="endView">
     <text id="endTxt">经典同在 体验精彩</text>
   </view>
+  <loading hidden="{{loadingShow}}">
+    加载中...
+  </loading>
 </view>
 
 

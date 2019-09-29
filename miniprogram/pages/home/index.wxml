@@ -1,7 +1,5 @@
 <view>
-  <loading hidden="{{loadingShow}}">
-    加载中...
-  </loading>
+  
   <view id="topView">
     <view id="bannerView">
       <view id="iconView">
@@ -63,6 +61,7 @@
     <view class="itemTopView">
       <view class="leftLabel">
           <text id="txtServerName">{{item.serverName}}</text>
+          
       </view>
       <view class="rightLabel">
           <text id="txtPop">{{item.goodsNum}}</text>
@@ -72,11 +71,14 @@
       <view class="progressView"> 
                     
           <view class="headImgView">
-          <image class="headImg" src="../../images/ah.png"></image>
-         </view>
+            <text class="noTxt">{{index+1}}</text>
+            <!--
+            <image class="headImg" src="../../images/ah.png"></image>
+            -->
+          </view>
            
-           <canvas class="mycanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
-             
+          <canvas class="mycanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
+          
       </view>
       <view class="dateView">
            <text class="txtRate">{{item.rateNum}}</text>
@@ -87,4 +89,8 @@
    <view id="endView">
     <text id="endTxt">经典同在 体验精彩</text>
   </view>
+
+  <loading hidden="{{loadingShow}}">
+    加载中...
+  </loading>  
 </view>

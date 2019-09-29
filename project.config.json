@@ -11,6 +11,8 @@
 	"appid": "wxbc0c8071d53a59ae",
 	"projectname": "mywow",
 	"libVersion": "2.2.5",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -9,6 +9,7 @@ Page({
     pv: 0,
     indexWord: "",
     serversCount: "",
+    isNew:false,
     btnList: [
       {
         btnName: "物资",
@@ -128,9 +129,10 @@ Page({
       server["goods_alliance"] = results[i].goods_alliance
       server["goods_horde"] = results[i].goods_horde
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
-      server["rate"] = (results[i].goods_alliance / results[i].goods_horde).toFixed(1);
+      server["rate"] = (results[i].goods_alliance / results[i].goods_horde)
       if (server["rate"] > 1 && server["rate"] < 10) {
         //处理下 3.0的情况
+        server["rate"] = server["rate"].toFixed(1)
         var numStr = server["rate"] + ""
         var endWord = numStr.substr(numStr.length - 1, numStr.length)
         if (endWord == "0") {
@@ -140,6 +142,8 @@ Page({
       } else if (server["rate"] >= 10){
         server["rateNum"] = "10+:1" 
       } else if (server["rate"] < 1 && server["rate"] > 0.1){
+        
+        server["rate"] = server["rate"].toFixed(2)
         var x = (1 / server["rate"]).toFixed(1)
         //处理下 3.0的情况
         var numStr = x + ""

@@ -11,7 +11,7 @@ Page({
     goods_alliance:0,
     goods_horde:0,
     updateTime:"",
-    nowday:"",
+    //nowday:"",
     loadingShow: false,
     img0Loaded:false,
     img1Loaded: false,
@@ -51,11 +51,20 @@ Page({
           var img0Str = 'cloud://wow-d7eecd.776f-wow-d7eecd/goods/' +timeStr+'_'+this.data.serverName+'_alliance.png'
           var img1Str = 'cloud://wow-d7eecd.776f-wow-d7eecd/goods/' + timeStr + '_' + this.data.serverName + '_horde.png'
 
+          var tmpT = "更新时间: "+dayStr.substring(3,21)
+          var upday = ""
+          if (this.countDayInterval(dayStr) > 0){
+            upday = this.countDayInterval(dayStr) + "天前"  
+          }else{
+            upday = "1天内"
+          }
+          
+
           this.setData({
             goods_alliance: res.data[0].goods_alliance,
             goods_horde: res.data[0].goods_horde,
-            updateTime: dayStr,
-            nowday:timeStr,
+            updateTime: tmpT + " " + upday,
+            //nowday:timeStr,
             img0: img0Str,
             img1: img1Str,
           })
@@ -147,5 +156,18 @@ Page({
         return monthNum
       }
     }
+  },
+  countDayInterval: function (daystr1) {
+    //var daystr1 = this.data.info_alliance.updateDay
+    var daystr2 = new Date()
+    console.log(daystr1)
+    console.log(daystr2)
+    var t1 = new Date(daystr1)
+    var t2 = new Date()
+    //转成毫秒数，两个日期相减
+    var ms = t2.getTime() - t1.getTime();
+    //转换成天数
+    var day = parseInt(ms / (1000 * 60 * 60 * 24));
+    return day
   },
 })

@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/home/index",
     "pages/home/detail",
     "pages/index/demo",
@@ -17,5 +16,6 @@
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "小程序 魔兽人口",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

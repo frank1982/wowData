@@ -186,6 +186,7 @@ page {
   border-radius:10rpx;
   margin-top: 3rpx;
   background-color: white;
+
 }
 .itemTopView{
   height:80rpx;
@@ -198,7 +199,9 @@ page {
   width: 350rpx;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .rightLabel{
@@ -215,6 +218,7 @@ page {
   justify-content: center;
   padding-left: 25rpx;
   /*子视图水平对齐*/
+
 }
 .progressView{
   width:530rpx;
@@ -257,5 +261,16 @@ page {
 }
 #endTxt{
   color:#d2b576;
+}
+.noTxt{
+  color:#d2b576;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight:bolder;
+}
+.newIconImg{
+  height:60rpx;
+  width:60rpx;
 }
 
