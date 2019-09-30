@@ -9,7 +9,6 @@ Page({
     pv: 0,
     indexWord: "",
     serversCount: "",
-    isNew:false,
     btnList: [
       {
         btnName: "物资",
@@ -130,6 +129,12 @@ Page({
       server["goods_horde"] = results[i].goods_horde
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
       server["rate"] = (results[i].goods_alliance / results[i].goods_horde)
+      var dotime = results[i].dotime
+      var isNew = false
+      if (this.countDayInterval(dotime) <= 0) {
+        isNew = true
+      } 
+      server["isNew"] = isNew
       if (server["rate"] > 1 && server["rate"] < 10) {
         //处理下 3.0的情况
         server["rate"] = server["rate"].toFixed(1)
@@ -470,5 +475,18 @@ Page({
 
     ctx.fill();
     ctx.closePath();
+  },
+  countDayInterval: function (daystr1) {
+    //var daystr1 = this.data.info_alliance.updateDay
+    var daystr2 = new Date()
+    console.log(daystr1)
+    console.log(daystr2)
+    var t1 = new Date(daystr1)
+    var t2 = new Date()
+    //转成毫秒数，两个日期相减
+    var ms = t2.getTime() - t1.getTime();
+    //转换成天数
+    var day = parseInt(ms / (1000 * 60 * 60 * 24));
+    return day
   },
 })

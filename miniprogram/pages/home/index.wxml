@@ -59,6 +59,7 @@
 <view id="listView" >
   <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item.serverName}}">
     <view class="itemTopView">
+      <!--
       <view class="leftLabel">
           <text id="txtServerName">{{item.serverName}}</text>
           
@@ -66,6 +67,12 @@
       <view class="rightLabel">
           <text id="txtPop">{{item.goodsNum}}</text>
       </view>
+      -->
+      
+      <text id="txtServerName">{{item.serverName}}</text>
+      
+      <image wx:if="{{item.isNew}}" src="../../images/new.png" class="newIconImg" ></image>
+     
     </view>
     <view class="itemMidView">
       <view class="progressView"> 

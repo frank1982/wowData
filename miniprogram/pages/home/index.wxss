@@ -186,14 +186,16 @@ page {
   border-radius:10rpx;
   margin-top: 3rpx;
   background-color: white;
-
 }
 .itemTopView{
   height:80rpx;
-  width:100%;
   display: flex;
-  justify-content: center;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 25rpx;
 }
+/*
 .leftLabel{
 
   width: 350rpx;
@@ -210,8 +212,9 @@ page {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /*子视图右对齐*/
+  //子视图右对齐
 }
+*/
 .itemMidView{
   height:60rpx;
   display: flex;
@@ -270,7 +273,10 @@ page {
   font-weight:bolder;
 }
 .newIconImg{
-  height:60rpx;
-  width:60rpx;
+  height:30rpx;
+  width:63rpx;
+  margin-left: 20rpx;
+}
+#txtServerName{
 }
 
