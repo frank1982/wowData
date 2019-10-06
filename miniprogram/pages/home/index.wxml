@@ -1,7 +1,16 @@
 <view>
-  
+  <view id="oneView">
+    <image id="f" src="../../images/foot.png"></image>
+    <text id="oneTxt">{{pv}}</text>
+    <text id="twoTxt">开服 {{openDays}} 天</text>
+  </view>
+
   <view id="topView">
-    <view id="bannerView">
+    <view class="adContainer" wx:if="{{isAdShow}}">
+      <ad unit-id="adunit-6861869b09e9f56b" ad-type="video" ad-theme="white"></ad>
+    </view>
+    
+    <view id="bannerView" wx:else>
       <view id="iconView">
        <image id="iconImage" src="../../images/icon.png"></image>
       </view>
@@ -12,6 +21,7 @@
         <image id="footImg" src="../../images/foot.png"></image>
       </view> 
     </view>
+    
     <view id="wordsView">
       <text id="words">{{indexWord}}</text>
     </view>

@@ -9,6 +9,8 @@ Page({
     pv: 0,
     indexWord: "",
     serversCount: "",
+    openDays:"",
+    isAdShow:false,
     btnList: [
       {
         btnName: "物资",
@@ -35,11 +37,25 @@ Page({
     serverInfoOnShow: [],
     canvas_ids: []
   },
+  countDays:function(){
+    var s1 = '2019-08-26';
+    s1 = new Date(s1.replace(/-/g, "/"));
+    var s2 = new Date();//当前日期：2017-04-24
+    var days = s2.getTime() - s1.getTime();
+    var time = parseInt(days / (1000 * 60 * 60 * 24));
+    return time
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    //openDays
+    var d = this.countDays()
+    this.setData({
+      openDays:this.countDays()
+    })
 
     this.initBtns(0)
     const db = wx.cloud.database()
@@ -48,7 +64,7 @@ Page({
     })
     .get()
     .then(res => {
-      console.log(res.data[0].pv)
+      //console.log(res.data[0].pv)
       this.setData({
         pv: res.data[0].pv,
       })
@@ -60,7 +76,7 @@ Page({
           pvnum: res.data[0].pv + 1
         },
         success: function (res) {
-          console.log(res)
+          //console.log(res)
         },
         fail: console.error
       })
@@ -71,26 +87,36 @@ Page({
     })
     .get()
     .then(res => {
-        console.log(res.data[0].content)
+        //console.log(res.data[0].content)
         this.setData({
           indexWord: res.data[0].content,
         })
     })
-
+    //const db = wx.cloud.database()
+    db.collection('words').where({
+      _id: "isAdShow"
+    })
+      .get()
+      .then(res => {
+        //console.log(res.data[0].status)
+        this.setData({
+          isAdShow: res.data[0].status,
+        })
+      })
     wx.cloud.callFunction({
       // 需调用的云函数名
       //name: 'getAllPopRecords',
       name: 'getGoods',
       // 成功回调
       complete: res => {
-        console.log('callFunction test result: ', res.result)
+        //console.log('callFunction test result: ', res.result)
         var results = res.result.data
         this.setData({
           loadingShow: true,
           serversCount: results.length
         })
-        console.log(results)
-        console.log("共 " + results.length + " 条服务器goods信息")
+        //console.log(results)
+        //console.log("共 " + results.length + " 条服务器goods信息")
         this.initServerInfo(results)
         this.drawBar();
         this.drawTotalBar();
@@ -121,7 +147,7 @@ Page({
     for (var i = 0; i < results.length; i++) {
 
       var server = {}
-      console.log(results[i])
+      //console.log(results[i])
       totalGoods_alliance += results[i].goods_alliance
       totalGoods_horde += results[i].goods_horde
       server["serverName"] = results[i]._id
@@ -176,7 +202,7 @@ Page({
         maxGoods = end[it].totalGoods
       }
     }
-    console.log("服务器最多的goods是: " + maxGoods)
+    //console.log("服务器最多的goods是: " + maxGoods)
 
     for (var z = 0; z < end.length; z++) {
 
@@ -185,8 +211,8 @@ Page({
     }
 
 
-    console.log("end:")
-    console.log(end)
+    //console.log("end:")
+    //console.log(end)
 
     var totalGoods = totalGoods_alliance + totalGoods_horde
     var share_alliance = (totalGoods_alliance / totalGoods * 100).toFixed(0)
@@ -223,7 +249,7 @@ Page({
     this.setData({
       serverInfoOnShow: end,
     });
-    console.log(this.data.canvas_ids)
+    //console.log(this.data.canvas_ids)
    
   },
   selectServer:function(e){
@@ -241,8 +267,8 @@ Page({
     var r = 6 * onerpx_px
     var ctx0 = wx.createCanvasContext('1000')
     var ctx1 = wx.createCanvasContext('1001')
-    console.log(this.data.totalCount.share_alliance)
-    console.log(this.data.totalCount.share_horde)
+    //console.log(this.data.totalCount.share_alliance)
+    //console.log(this.data.totalCount.share_horde)
     this.roundRect(ctx0, 0, 0, FullW * this.data.totalCount.share_alliance / 100, H, r, '#0079FF')
     this.roundRect(ctx1, 0, 0, FullW * this.data.totalCount.share_horde / 100, H, r, '#D50000')
     ctx0.draw();
@@ -297,7 +323,7 @@ Page({
 
   },
   drawBar: function () {
-    console.log("draw bar")
+    //console.log("draw bar")
     var onerpx_px = wx.getSystemInfoSync().windowWidth / 750;
     var H = 60 * onerpx_px
     //var FullW = 525 * onerpx_px
@@ -308,8 +334,8 @@ Page({
       var canvasId = this.data.canvas_ids[i]
       var bar_alliance = info.bar_alliance;
       var bar_horde = info.bar_horde;
-      console.log(canvasId)
-      console.log(bar_alliance)
+      //console.log(canvasId)
+      //console.log(bar_alliance)
       var ctx = wx.createCanvasContext(canvasId)
       this.roundRect(ctx, 0, 0, FullW * bar_alliance, H, r, '#0079FF')
       
@@ -320,7 +346,7 @@ Page({
   },
   clickBtn: function (e) {
 
-    console.log("click btn")
+    //console.log("click btn")
     var no = e.currentTarget.dataset.no;
     console.log(no);
     this.initBtns(no)
@@ -478,9 +504,9 @@ Page({
   },
   countDayInterval: function (daystr1) {
     //var daystr1 = this.data.info_alliance.updateDay
-    var daystr2 = new Date()
-    console.log(daystr1)
-    console.log(daystr2)
+    //var daystr2 = new Date()
+    //console.log(daystr1)
+    //console.log(daystr2)
     var t1 = new Date(daystr1)
     var t2 = new Date()
     //转成毫秒数，两个日期相减
