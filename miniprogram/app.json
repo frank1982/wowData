@@ -2,8 +2,7 @@
   "pages": [
     "pages/home/index",
     "pages/home/detail",
-    "pages/index/demo",
-    "pages/userConsole/userConsole",
+"pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",

@@ -1,4 +1,7 @@
 // pages/home/index.js
+//插屏广告
+//let interstitialAd = null
+
 Page({
 
   /**
@@ -10,7 +13,7 @@ Page({
     indexWord: "",
     serversCount: "",
     openDays:"",
-    isAdShow:false,
+    isAdShow:true,//如果默认false canvas 错位！
     btnList: [
       {
         btnName: "物资",
@@ -51,13 +54,14 @@ Page({
    */
   onLoad: function (options) {
 
-    //openDays
+    console.log("onload")
+    
+
     var d = this.countDays()
     this.setData({
       openDays:this.countDays()
     })
 
-    this.initBtns(0)
     const db = wx.cloud.database()
     db.collection('words').where({
       _id: "pvs"
@@ -82,16 +86,7 @@ Page({
       })
     })
 
-    db.collection('words').where({
-      _id: "indexWord"
-    })
-    .get()
-    .then(res => {
-        //console.log(res.data[0].content)
-        this.setData({
-          indexWord: res.data[0].content,
-        })
-    })
+    
     //const db = wx.cloud.database()
     db.collection('words').where({
       _id: "isAdShow"
@@ -102,28 +97,25 @@ Page({
         this.setData({
           isAdShow: res.data[0].status,
         })
-      })
-    wx.cloud.callFunction({
-      // 需调用的云函数名
-      //name: 'getAllPopRecords',
-      name: 'getGoods',
-      // 成功回调
-      complete: res => {
-        //console.log('callFunction test result: ', res.result)
-        var results = res.result.data
-        this.setData({
-          loadingShow: true,
-          serversCount: results.length
+        //先判断广告位配置
+
+        db.collection('words').where({
+          _id: "indexWord"
         })
-        //console.log(results)
-        //console.log("共 " + results.length + " 条服务器goods信息")
-        this.initServerInfo(results)
-        this.drawBar();
-        this.drawTotalBar();
-      },
-    })
+          .get()
+          .then(res => {
+            //console.log(res.data[0].content)
+            this.setData({
+              indexWord: res.data[0].content,
+            })
+        })
+
+        
+      })
+    
 
   },
+ 
   initBtns: function (no) {
     var tmp = this.data.btnList
     for (var i = 0; i < tmp.length; i++) {
@@ -277,15 +269,77 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  loadAd:function(){
+    console.log("load ad success")
+    //this.loadBars();
+  },
+  loadAdError:function(e){
+    console.log("load ad error")
+    console.log(e)
+    //刷新当前页面的数据
+    getCurrentPages()[getCurrentPages().length - 1].onLoad()
+  },
+  loadClose:function(){},
+  loadImg:function(){
+    console.log("load img")
+    //this.loadBars();
+  },
+  loadBars:function(){
+
+    wx.cloud.callFunction({
+      // 需调用的云函数名
+      //name: 'getAllPopRecords',
+      name: 'getGoods',
+      // 成功回调
+      complete: res => {
+        //console.log('callFunction test result: ', res.result)
+        var results = res.result.data
+
+        //console.log(results)
+        //console.log("共 " + results.length + " 条服务器goods信息")
+        var that = this
+        setTimeout(function () {
+          that.initBtns(0)
+          that.initServerInfo(results)
+          that.drawTotalBar();
+          that.drawBar();
+          that.setData({
+            loadingShow: true,
+            serversCount: results.length
+          })
+          
+        }, 400);
+
+        /*
+        if (wx.createInterstitialAd) {
+          interstitialAd = wx.createInterstitialAd({
+            adUnitId: 'adunit-2c50af1d54821639'
+          })
+          interstitialAd.onLoad(() => { })
+          interstitialAd.onError((err) => { })
+          interstitialAd.onClose(() => { })}
+          if (interstitialAd) {
+            interstitialAd.show().catch((err) => {
+            console.error(err)
+          })
+        }
+        */
+
+      },
+    })
+  },
   onReady: function () {
 
+    console.log("onReady")
+    this.loadBars();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("onShow")
+   
   },
 
   /**

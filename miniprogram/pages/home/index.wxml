@@ -6,16 +6,20 @@
   </view>
 
   <view id="topView">
+    <!--
     <view class="adContainer" wx:if="{{isAdShow}}">
       <ad unit-id="adunit-6861869b09e9f56b" ad-type="video" ad-theme="white"></ad>
     </view>
-    
+    -->
+    <view class="adContainer" wx:if="{{isAdShow}}">
+      <ad unit-id="adunit-1d666540524d0133" ad-intervals="30" bindload="loadAd" binderror="loadAdError" bindclose="loadClose"></ad>
+    </view>
     <view id="bannerView" wx:else>
       <view id="iconView">
-       <image id="iconImage" src="../../images/icon.png"></image>
+       <image id="iconImage" src="../../images/icon.png" bindload="loadImg"></image>
       </view>
       <view id="rightView">  
-        <text class="title">{{pv}} 位玩家来过</text>
+        <text class="title">一起畅游艾泽拉斯</text>
       </view>
       <view id="rightImgView">  
         <image id="footImg" src="../../images/foot.png"></image>
