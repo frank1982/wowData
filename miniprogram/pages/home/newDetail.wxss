@@ -1,0 +1,137 @@
+page {
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+#oneView{
+  background:#FFFFFF;
+  /*height: 260rpx;*/
+  width: 100%;
+  display: flex;  
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.adContainer{
+  width:700rpx;
+  margin-left: 25rpx;
+  border-style: solid;
+  border-width: 2rpx;
+  border-color: #d2b576;
+}
+.detailWordView{
+  height:100rpx;
+  width:100%;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#detailTxt{
+  font-size: small;
+  color:#696969;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+}
+#topView{
+  height:100rpx;
+  width:100%;
+  display: flex;  
+  justify-content: flex-start;
+  background-color: white;
+}
+#leftTopView{
+   height:100rpx;
+   width:50%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+}
+#rightTopView{
+   height:100rpx;
+   width:50%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+}
+#leftTxt{
+  margin-left: 25rpx;
+  color: #0079FF;
+}
+.GoodsTxt{
+  background-color: #051041;
+  color: #d2b576;
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+  border-radius: 6rpx;
+  margin-right: 25rpx;
+}
+#rightTxt{
+  margin-left: 25rpx;
+  color: #D50000;
+}
+.tbView{
+
+  margin-top: 20rpx;
+  width:100%;
+}
+.tbItemView{
+
+  height:80rpx;
+  width:100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+.leftItemView{
+
+  height:80rpx;
+  width:25%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25rpx;
+}
+.dayTxt{
+  color: #696969;
+  font-size: small;
+}
+.aTxt{
+  color:#0079FF;
+  font-size: small;
+  font-weight: bold;
+}
+.hTxt{
+  color: #D50000;
+  font-size: small;
+  font-weight: bold;
+}
+.midItemView{
+
+  height:80rpx;
+  width:25%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25rpx;
+}
+
+.rightItemView{
+
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25rpx;
+}
+
+#mycanvas{
+  margin-top: 20rpx;
+  width:100%;
+  height:500rpx;
+  background-color: white;
+}

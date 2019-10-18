@@ -226,8 +226,36 @@ page {
   flex-direction:row;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 25rpx;
+
 }
+#leftView{
+  height:80rpx;
+  width:450rpx;
+  padding-left: 25rpx;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-start;
+}
+#rightView{
+  
+  height:80rpx;
+  width:300rpx;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 25rpx;
+}
+#heartTxt{
+  margin-right: 20rpx;
+  color:#d2b576;
+}
+#heartImg{
+  height:40rpx;
+  width:40rpx;
+}
+
 /*
 .leftLabel{
 
@@ -312,4 +340,3 @@ page {
 }
 #txtServerName{
 }
-

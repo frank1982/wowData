@@ -10,8 +10,6 @@ exports.main = async (event, context) => {
   // 先取出集合记录总数
   const countResult = await db.collection('goods').count()
   const total = countResult.total
-  //console.log("total:")
-  //console.log(total)
   // 计算需分几次取
   const batchTimes = Math.ceil(total / 100)
   // 承载所有读操作的 promise 的数组

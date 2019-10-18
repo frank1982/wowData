@@ -1,0 +1,131 @@
+<view>
+  <view id="oneView">
+    <image id="f" src="../../images/foot.png"></image>
+    <text id="oneTxt">{{pv}}</text>
+    <text id="twoTxt">开服 {{openDays}} 天</text>
+  </view>
+
+  <view id="topView">
+    <!--
+    <view class="adContainer" wx:if="{{isAdShow}}">
+      <ad unit-id="adunit-6861869b09e9f56b" ad-type="video" ad-theme="white"></ad>
+    </view>
+    -->
+    <view class="adContainer">
+      <ad unit-id="adunit-1d666540524d0133" ad-intervals="30"></ad>
+    </view>
+    <!--
+    <view id="bannerView" wx:else>
+      <view id="iconView">
+       <image id="iconImage" src="../../images/icon.png" bindload="loadImg"></image>
+      </view>
+      <view id="rightView">  
+        <text class="title">一起畅游艾泽拉斯</text>
+      </view>
+      <view id="rightImgView">  
+        <image id="footImg" src="../../images/foot.png"></image>
+      </view> 
+    </view>
+    -->
+    <view id="wordsView">
+      <text id="words">{{indexWord}}</text>
+    </view>
+  </view>
+
+
+  <view id="countTotalView">
+    <view id="ahTitleView">
+      <view id="ahLeftView">拍卖物品总比例</view>
+      <view id="ahRightView">服务器 {{serversCount}} 组</view>
+    </view>
+    <view class="campView">
+      <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='1000'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{totalCount.share_alliance}}%</view>
+    </view>
+  </view>
+  <view class="campView">
+    <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='1001'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{totalCount.share_horde}}%</view>
+    </view>
+  
+  </view>
+
+  
+  </view>
+<view class="noticeView">
+  <image id="noticeImg" src="../../images/notice.png"></image>
+  <text id="noticeTxt">{{detailWords2}}</text>
+</view>
+<view id="btnArea">
+    <view class='btn' wx:for="{{btnList}}" bindtap="clickBtn" data-no="{{item.btnNo}}">
+      <text class="btnTitle" style="color:{{item.bgColor}}">{{item.btnName}}</text>
+    </view>
+</view>
+
+<view id="listView" >
+  <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item}}">
+  <!--
+  <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item.serverName}}">
+  -->
+    <view class="itemTopView">
+      <!--
+      <view class="leftLabel">
+          <text id="txtServerName">{{item.serverName}}</text>
+          
+      </view>
+      <view class="rightLabel">
+          <text id="txtPop">{{item.goodsNum}}</text>
+      </view>
+      -->
+      <view id="leftView">
+        <text id="txtServerName">{{item.serverName}}</text>
+      
+      <image wx:if="{{item.isNew}}" src="../../images/new.png" class="newIconImg" ></image>
+      </view>
+      <!--
+      <view id="rightView" wx:if="{{item.heartNum > 0}}">
+        <text id="heartTxt">{{item.heartNum}}</text>
+      
+        <image id="heartImg" src="../../images/heart.png"></image>
+      </view>
+      -->
+    </view>
+    <view class="itemMidView">
+      <view class="progressView"> 
+                    
+          <view class="headImgView">
+            <text class="noTxt">{{index+1}}</text>
+            <!--
+            <image class="headImg" src="../../images/ah.png"></image>
+            -->
+          </view>
+           
+          <canvas class="mycanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
+          
+      </view>
+      <view class="dateView">
+           <text class="txtRate">{{item.rateNum}}</text>
+        </view>  
+    </view>
+  </view>
+</view>
+   <view id="endView">
+    <text id="endTxt">经典同在 体验精彩</text>
+  </view>
+
+  <loading hidden="{{loadingShow}}">
+    加载中...
+  </loading>  
+</view>

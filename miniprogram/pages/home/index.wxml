@@ -11,9 +11,10 @@
       <ad unit-id="adunit-6861869b09e9f56b" ad-type="video" ad-theme="white"></ad>
     </view>
     -->
-    <view class="adContainer" wx:if="{{isAdShow}}">
-      <ad unit-id="adunit-1d666540524d0133" ad-intervals="30" bindload="loadAd" binderror="loadAdError" bindclose="loadClose"></ad>
+    <view class="adContainer">
+      <ad unit-id="adunit-1d666540524d0133" ad-intervals="30"></ad>
     </view>
+    <!--
     <view id="bannerView" wx:else>
       <view id="iconView">
        <image id="iconImage" src="../../images/icon.png" bindload="loadImg"></image>
@@ -25,7 +26,7 @@
         <image id="footImg" src="../../images/foot.png"></image>
       </view> 
     </view>
-    
+    -->
     <view id="wordsView">
       <text id="words">{{indexWord}}</text>
     </view>
@@ -71,7 +72,10 @@
 </view>
 
 <view id="listView" >
+  <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item}}">
+  <!--
   <view class="itemView" wx:for="{{serverInfoOnShow}}"  catchtap='selectServer' data-bean="{{item.serverName}}">
+  -->
     <view class="itemTopView">
       <!--
       <view class="leftLabel">
@@ -82,11 +86,18 @@
           <text id="txtPop">{{item.goodsNum}}</text>
       </view>
       -->
-      
-      <text id="txtServerName">{{item.serverName}}</text>
+      <view id="leftView">
+        <text id="txtServerName">{{item.serverName}}</text>
       
       <image wx:if="{{item.isNew}}" src="../../images/new.png" class="newIconImg" ></image>
-     
+      </view>
+      <!--
+      <view id="rightView" wx:if="{{item.heartNum > 0}}">
+        <text id="heartTxt">{{item.heartNum}}</text>
+      
+        <image id="heartImg" src="../../images/heart.png"></image>
+      </view>
+      -->
     </view>
     <view class="itemMidView">
       <view class="progressView"> 

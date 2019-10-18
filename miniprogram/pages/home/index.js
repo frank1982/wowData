@@ -1,7 +1,7 @@
 // pages/home/index.js
 //插屏广告
 //let interstitialAd = null
-
+const app = getApp();
 Page({
 
   /**
@@ -13,7 +13,8 @@ Page({
     indexWord: "",
     serversCount: "",
     openDays:"",
-    isAdShow:true,//如果默认false canvas 错位！
+    //isAdShow:true,//如果默认false canvas 错位！
+    //heartsList:[],
     btnList: [
       {
         btnName: "物资",
@@ -55,13 +56,45 @@ Page({
   onLoad: function (options) {
 
     console.log("onload")
-    
-
     var d = this.countDays()
     this.setData({
       openDays:this.countDays()
     })
 
+    const db = wx.cloud.database()
+  
+    db.collection('words')
+    .get()
+    .then(res => {
+
+      //console.log(res.data)
+      var indexWord = res.data[0].content
+      var pv = res.data[1].pv
+      var detailWords = res.data[5].content
+      console.log(detailWords)
+      app.globalData.detailWords = detailWords
+      //console.log(indexWord)
+      //console.log(pv)
+      this.setData({
+        pv: pv,
+        indexWord: indexWord,
+      })
+    
+    })
+
+    //pv + 1
+    //const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('words').doc('pvs').update({
+      data: {
+        pv: _.inc(1)
+      },
+      success: console.log,
+      fail: console.error
+    })
+
+
+    /*
     const db = wx.cloud.database()
     db.collection('words').where({
       _id: "pvs"
@@ -85,7 +118,6 @@ Page({
         fail: console.error
       })
     })
-
     
     //const db = wx.cloud.database()
     db.collection('words').where({
@@ -112,8 +144,24 @@ Page({
 
         
       })
-    
+      */
 
+    /*  
+    var that = this
+    wx.cloud.callFunction({
+      // 需调用的云函数名
+      //name: 'getAllPopRecords',
+      name: 'getHearts',
+      // 成功回调
+      complete: res => {
+        //console.log('callFunction test result: ', res.result)
+        var results = res.result.data
+        that.setData({
+          heartsList: results
+        })
+      }
+    })
+    */  
   },
  
   initBtns: function (no) {
@@ -148,11 +196,24 @@ Page({
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
       server["rate"] = (results[i].goods_alliance / results[i].goods_horde)
       var dotime = results[i].dotime
+      server["dotime"] = results[i].dotime
       var isNew = false
       if (this.countDayInterval(dotime) <= 0) {
         isNew = true
       } 
       server["isNew"] = isNew
+
+      /*
+      var hearts=this.data.heartsList
+      for(var z=0;z<hearts.length;z++){
+        //console.log(hearts[z])
+        if (server["serverName"] == hearts[z]._id){
+          server['heartNum'] = hearts[z].heartNum
+          break
+        }
+      }
+      */
+
       if (server["rate"] > 1 && server["rate"] < 10) {
         //处理下 3.0的情况
         server["rate"] = server["rate"].toFixed(1)
@@ -245,12 +306,20 @@ Page({
    
   },
   selectServer:function(e){
-    var serverName = e.currentTarget.dataset.bean
+    var item = e.currentTarget.dataset.bean
+    //console.log(item)
+    var serverName = item.serverName
+    var goods_alliance = item.goods_alliance
+    var goods_horde = item.goods_horde
+    var dotime = item.dotime
+
+    
     wx.navigateTo({
 
-      url: '/pages/home/detail?serverName=' + serverName,
+      url: '/pages/home/detail?serverName=' + serverName + "&goodA=" + goods_alliance+"&goodH="+goods_horde+"&dotime="+dotime,
 
     })
+    
   },
   drawTotalBar: function () {
     var onerpx_px = wx.getSystemInfoSync().windowWidth / 750;
@@ -277,7 +346,7 @@ Page({
     console.log("load ad error")
     console.log(e)
     //刷新当前页面的数据
-    getCurrentPages()[getCurrentPages().length - 1].onLoad()
+    //getCurrentPages()[getCurrentPages().length - 1].onLoad()
   },
   loadClose:function(){},
   loadImg:function(){
@@ -286,6 +355,7 @@ Page({
   },
   loadBars:function(){
 
+    console.log("loadBars")
     wx.cloud.callFunction({
       // 需调用的云函数名
       //name: 'getAllPopRecords',
@@ -339,7 +409,6 @@ Page({
    */
   onShow: function () {
     console.log("onShow")
-   
   },
 
   /**

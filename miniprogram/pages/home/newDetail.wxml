@@ -1,0 +1,36 @@
+<view>
+<view id="oneView">
+  <view class="adContainer">   
+    <ad unit-id="adunit-1d666540524d0133" ad-intervals="30"></ad>
+  </view>
+ </view> 
+  <view class="detailWordView">
+    <text id="detailTxt">{{detailWords}}</text>
+  </view>
+  <view id="topView">
+    <view id="leftTopView">
+      <text id="leftTxt">联盟</text>
+      <view class="GoodsTxt">{{goods_alliance}}</view>
+    </view>
+    <view id="rightTopView">
+      <text id="rightTxt">部落</text>
+      <view class="GoodsTxt">{{goods_horde}}</view>
+    </view>
+  </view>
+  <view class="tbView">
+    <view class="tbItemView" wx:for="{{detailInfoList}}" catchtap='selectInfo' data-bean="{{item}}">
+      <view class="leftItemView">
+        <text class="dayTxt">{{item.upday}} ></text>
+      </view>
+      <view class="midItemView">
+        <text class="aTxt">{{item.alliance}}</text>
+      </view>
+      <view class="rightItemView">
+        <text class="hTxt">{{item.horde}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="container">
+    <ff-canvas id="mycanvas" canvas-id="column"></ff-canvas>
+  </view>
+</view>

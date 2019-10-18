@@ -1,0 +1,54 @@
+page {
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+#oneView{
+  background:#FFFFFF;
+  /*height: 260rpx;*/
+  width: 100%;
+  display: flex;  
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.adContainer{
+  width:700rpx;
+  margin-left: 25rpx;
+  border-style: solid;
+  border-width: 2rpx;
+  border-color: #d2b576;
+}
+#infoView{
+  height: 80rpx;
+  width:100%;
+  margin-top: 20rpx;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+}
+#infoTxt{
+  color: #696969;
+  margin-left: 25rpx;
+  font-size: small;
+}
+#img0{
+  width:680rpx;
+  border-radius: 30rpx;
+  border-width:10rpx;
+  border-color: #0079FF;
+  border-style: solid;
+  margin-left: 25rpx;
+}
+#img1{
+  width:680rpx;
+  border-radius: 30rpx;
+  border-width:10rpx;
+  border-color: #D50000;
+  border-style: solid;
+  margin-left: 25rpx;
+}

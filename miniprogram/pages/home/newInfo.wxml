@@ -1,0 +1,20 @@
+<view>
+  <view id="oneView">
+  <view class="adContainer">   
+    <ad unit-id="adunit-1d666540524d0133" ad-intervals="30"></ad>
+  </view>
+ </view> 
+
+  <view id="infoView">
+    <text id="infoTxt">{{updateTime}}</text>
+  </view>
+  <view id="bottomView">
+    <image id="img0" src='{{img0}}' model="aspectFit" bindload="imageLoad0" ></image>
+    <image id="img1" src='{{img1}}' model="aspectFit" bindload="imageLoad1" ></image>
+
+  </view>
+
+  <loading hidden="{{loadingShow}}">
+  加载中...
+</loading> 
+</view>  

@@ -1,4 +1,5 @@
 // pages/home/detail.js
+const app = getApp();
 Page({
 
   /**
@@ -11,26 +12,67 @@ Page({
     goods_alliance:0,
     goods_horde:0,
     updateTime:"",
+    datailWords:"",
     //nowday:"",
     loadingShow: false,
     img0Loaded:false,
     img1Loaded: false,
     img0:"",
     img1:"",
+    img00:"",
+    img10:"",
+    //heartImgSrc:"../../images/heart.png",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options+++++++++++", options)
-    this.setData({
-      serverName: options.serverName
-    })
+    //console.log("options+++++++++++", options)
+    var serverName = options.serverName
+    var dotime = options.dotime
+    var goodsA=options.goodA
+    var goodsH=options.goodH
+    
+ 
     wx.setNavigationBarTitle({
-      title: options.serverName
+      title: serverName
+    })
+    
+    var dayStr = dotime
+    var dd = dayStr.substring(8, 10)
+    var yy = dayStr.substring(11, 15)
+    var mmstr = dayStr.substring(4, 7)
+    var mm = this.GetMonth(mmstr)
+    var timeStr = yy + mm + dd
+    var img0Str = 'cloud://wow-d7eecd.776f-wow-d7eecd/goods/' + timeStr + '_' + serverName + '_alliance.png'
+    var img1Str = 'cloud://wow-d7eecd.776f-wow-d7eecd/goods/' + timeStr + '_' + serverName + '_horde.png'
+
+    var tmpT = "更新时间: " + dayStr.substring(3, 21)
+    var upday = ""
+    if (this.countDayInterval(dayStr) > 0) {
+      upday = this.countDayInterval(dayStr) + "天前"
+    } else {
+      upday = "1天内"
+    }
+
+    var datailWords = app.globalData.detailWords
+
+    this.setData({
+
+      serverName: serverName,
+      goods_alliance: goodsA,
+      goods_horde: goodsH,
+      updateTime: tmpT + " " + upday,
+      datailWords: datailWords,
+
+      //datailWords: app.globalData.detailWords,
+      //nowday:timeStr,
+      img0: img0Str,
+      img1: img1Str,
     })
 
+    /*
     const db = wx.cloud.database()
     db.collection('goods').where({
       _id: this.data.serverName
@@ -70,6 +112,7 @@ Page({
           })
         }
     })
+    */
   },
 
   /**
@@ -120,6 +163,42 @@ Page({
   onShareAppMessage: function () {
 
   },
+  /*
+  clickHeart:function(){
+
+    console.log('click heart')
+    //console.log(app.globalData.isHeart)
+    if (app.globalData.isHeart){
+      wx.showToast({
+        title: '您刚刚已经点过啦',
+        icon: 'none',
+        duration: 1000
+      })
+    }else{
+      wx.cloud.callFunction({
+        // 云函数名称
+        name: 'updateHearts',
+        // 传给云函数的参数
+        data: {
+          serverName: this.data.serverName
+        },
+        success: function (res) {
+          //console.log(res)
+        },
+        fail: console.error
+      })
+      wx.showToast({
+        title: '谢谢鼓励',
+        icon: 'success',
+        duration: 1000
+      })
+      app.globalData.isHeart = !app.globalData.isHeart
+    }
+    //app.globalData.isHeart = !app.globalData.isHeart
+    
+
+  },
+  */
   imageLoad0:function(e){
     console.log("image0 load")
     this.setData({
