@@ -40,7 +40,10 @@ Page({
     ],
     btnSelected: 0,
     serverInfoOnShow: [],
-    canvas_ids: []
+    canvas_ids: [],
+    bottomImg0:"",
+    bottomImg1: "",
+    bottomItemSelected:-1,
   },
   countDays: function () {
     var s1 = '2019-08-26';
@@ -57,10 +60,11 @@ Page({
   onLoad: function (options) {
 
     console.log("onload")
+
     
     var d = this.countDays()
     this.setData({
-      openDays: this.countDays()
+      openDays: this.countDays(),
     })
 
     const db = wx.cloud.database()
@@ -77,7 +81,7 @@ Page({
         console.log(detailWords)
         app.globalData.detailWords = detailWords
         //console.log(indexWord)
-        //console.log(pv)
+        console.log(pv)
         this.setData({
           pv: pv,
           indexWord: indexWord,
@@ -85,13 +89,15 @@ Page({
         })
 
       })
-    const _ = db.command
-    db.collection('words').doc('pvs').update({
-      data: {
-        pv: _.inc(1)
-      },
-      success: console.log,
-      fail: console.error
+
+    wx.cloud.callFunction({
+      // 需调用的云函数名
+      name: 'updatePv',
+      // 成功回调
+      complete: res => {
+        
+        console.log(res)
+      }
     })
     
   },
@@ -355,6 +361,11 @@ Page({
    */
   onShow: function () {
     console.log("onShow")
+    this.setData({
+      bottomItemSelected: 0,
+      bottomImg0: "../../images/index1.png",
+      bottomImg1: "../../images/special0.png",
+    })
   },
 
   /**
@@ -584,4 +595,36 @@ Page({
     var day = parseInt(ms / (1000 * 60 * 60 * 24));
     return day
   },
+  clickBottom0:function(){
+
+    console.log("click index")
+    if (this.data.bottomItemSelected != 0){
+
+      this.setData({
+        bottomItemSelected:0,
+        bottomImg0: "../../images/index1.png",
+        bottomImg1: "../../images/special0.png",
+      })
+    }
+  },
+  clickBottom1: function () {
+
+    console.log("click special")
+    if (this.data.bottomItemSelected != 1) {
+
+      this.setData({
+        bottomItemSelected: 1,
+        bottomImg0: "../../images/index0.png",
+        bottomImg1: "../../images/special1.png",
+      })
+
+      wx.navigateTo({
+
+        url: '/pages/home/newSpecial',
+
+      })
+    }
+
+
+  }
 })

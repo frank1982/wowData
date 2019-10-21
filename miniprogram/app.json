@@ -1,10 +1,13 @@
 {
   "pages": [
+    
     "pages/home/newIndex",
-    "pages/home/index",
+    "pages/home/newSpecial",
+    "pages/home/specialDetail",
     "pages/home/detail",
     "pages/home/newDetail",
     "pages/home/newInfo",
+    "pages/home/newSpecialInfo",
 "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

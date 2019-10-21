@@ -1,0 +1,146 @@
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.topNoticeView{
+
+  width:100%;
+  height:80rpx;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /*垂直水平居中*/
+}
+.topNoticeTxt{
+
+  font-size: medium;
+  color: #d2b576;
+  margin-left: 25rpx;
+}
+#topNoticeImg{
+  width:40rpx;
+  height:40rpx;
+}
+#listView{
+  
+  background-color: white;
+  width:100%;
+  margin-top: 20rpx;
+}
+.specialItem{
+  margin-top: 25rpx;
+  height:280rpx;
+  width:100%;
+  background-color: white;
+}
+.topItemView{
+  height:80rpx;
+  width:100%;
+  display: flex;  
+  justify-content: center;
+}
+.topLView{
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+.listTxt{
+
+  color: #696969;
+  margin-left: 25rpx;
+  font-size: small;
+}
+
+.topRView{
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+.timeTxt{
+  color: #696969;
+  margin-right: 25rpx;
+  font-size: small;
+}
+.midItemView{
+  height:120rpx;
+  width:700rpx;
+  margin-left: 25rpx;
+  background-color: #051041;
+  border-radius: 6rpx;
+  display: flex;  
+  justify-content: center;
+}
+.midLView{
+  height:120rpx;
+  width:120rpx;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /*垂直水平居中*/
+}
+.midRView{
+  height:120rpx;
+  width:580rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  /*垂直水平居中*/
+}
+.specialIcon{
+
+  height:50rpx;
+  width:50rpx;
+}
+.specialTxt{
+  font-size:large;
+  color: #d2b576;
+  margin-left: 25rpx;
+}
+.bottomItemView{
+  height:80rpx;
+  width:100%;
+  display: flex;  
+  justify-content: center;
+
+}
+.bottomLView{
+  height:80rpx;
+  width:130rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  /*垂直水平居中*/
+}
+.starIcon{
+  height:45rpx;
+  width:45rpx;
+  margin-left: 60rpx;
+}
+.bottomRView{
+  height:80rpx;
+  width:620rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  /*垂直水平居中*/
+}
+.no1name{
+  font-size: small
+}

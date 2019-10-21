@@ -79,19 +79,26 @@ Page({
         pv: pv,
         indexWord: indexWord,
       })
+
+      
     
     })
 
+    const _ = db.command
+      db.collection('words').doc('pvs').update({
+        data: {
+          pv: _.inc(1)
+        },
+        success: function (res) {
+          console.log("success inc")
+          console.log(res)
+        },
+        fail: console.error
+      })
+
     //pv + 1
     //const db = wx.cloud.database()
-    const _ = db.command
-    db.collection('words').doc('pvs').update({
-      data: {
-        pv: _.inc(1)
-      },
-      success: console.log,
-      fail: console.error
-    })
+    
 
 
     /*

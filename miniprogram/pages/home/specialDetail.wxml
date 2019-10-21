@@ -1,0 +1,43 @@
+<view>
+  <view class="summaryView">
+    <view class="lsView">
+      <image class="sImg" src="../../images/pen.png"></image>
+    </view>
+    <view class="rsView">
+      <text class="summaryTxt">{{summary}}</text>
+    </view>
+  </view>
+  <view class="timeView">
+    <view class="ltView">
+      <text class="tTxt">统计时间</text>
+    </view>
+    <view class="rtView">
+      <text class="t2Txt">{{timeStr}}</text>
+    </view>
+  </view>
+
+  <view class="listView">
+
+    <view class="itemView" wx:for="{{onShowData}}" catchtap='selectServer' data-bean="{{item}}">
+      <view class="itemTopView">
+        <text id="txtServerName">{{item.serverName}}</text>
+      </view>
+      <view class="itemMidView">
+        <view class="progressView">
+          <view class="headImgView">
+            <text class="noTxt">{{index+1}}</text>
+          </view>
+          <canvas class="mycanvas" canvas-id="{{canvas_ids[index]}}"></canvas>
+        </view>
+        <view class="rateView">
+          <text class="txtRate">{{item.rateNum}}</text>
+        </view>
+      </view>
+
+    </view>
+    
+  </view>  
+  <view id="endView">
+    <text id="endTxt">到底啦</text>
+  </view>
+</view>

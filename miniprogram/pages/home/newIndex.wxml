@@ -122,10 +122,20 @@
   </view>
 </view>
    <view id="endView">
-    <text id="endTxt">经典同在 体验精彩</text>
+    <text id="endTxt">到底啦</text>
   </view>
 
   <loading hidden="{{loadingShow}}">
     加载中...
   </loading>  
+
+  <cover-view class="bottomMenuView">
+    <cover-view id="leftMenuView">
+      <cover-image id="indexImg" wx:if='{{bottomImg0}}' src='{{bottomImg0}}' bindtap="clickBottom0"></cover-image>
+    </cover-view>
+    <cover-view id="rightMenuView">
+       <cover-image id="specialImg" wx:if='{{bottomImg1}}' src='{{bottomImg1}}' bindtap="clickBottom1"></cover-image>
+   
+    </cover-view>
+  </cover-view>
 </view>

@@ -80,6 +80,7 @@ page {
 }
 .tbItemView{
 
+  margin-top: 10rpx;
   height:80rpx;
   width:100%;
   background-color: white;

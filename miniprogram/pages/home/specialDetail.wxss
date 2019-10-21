@@ -1,0 +1,180 @@
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.summaryView{
+
+  background-color: white;
+  width:100%;
+  height:100rpx;
+  display: flex;
+  justify-content: flex-start;
+
+}
+.lsView{
+
+  width:120rpx;
+  height:100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+
+}
+.rsView{
+  width:605rpx;
+  height:100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+
+}
+.sImg{
+  width:53rpx;
+  height:50rpx;
+  margin-left: 25rpx;
+}
+.summaryTxt{
+  
+  font-size: small;
+  color:#d2b576;
+  
+}
+.timeView{
+  height:80rpx;
+  width:100%;
+  background-color: white;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+.ltView{
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+.rtView{
+
+  height:80rpx;
+  width:50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+.tTxt{
+
+  font-size: small;
+  color: #696969;
+  margin-left: 25rpx;
+}
+.t2Txt{
+  font-size: small;
+  color: #696969;
+  margin-right: 25rpx;
+}
+.listView{
+  width:100%;
+  margin-top: 25rpx;
+}
+.itemView{
+  height:160rpx;
+  width: 750rpx;
+  border-radius:10rpx;
+  margin-top: 5rpx;
+  background-color: white;
+}
+.itemTopView{
+  height:80rpx;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-start;
+
+
+}
+#txtServerName{
+  
+  font-size: small;
+  margin-left: 25rpx;
+}
+.itemMidView{
+
+  height:60rpx;
+  display: flex;
+  justify-content: center;
+  padding-left: 25rpx;
+  /*子视图水平对齐*/
+}
+.progressView{
+
+  width:530rpx;
+  height:30rpx;
+  display: flex;
+  justify-content: center;
+
+}
+.rateView{
+  background-color: #051041;
+  height: 60rpx;
+  width:150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 6rpx;
+  margin-right: 25rpx;
+  margin-left: 25rpx;
+  /*子视图右对齐*/
+}
+.txtRate{
+  color: #d2b576;
+  margin-right: 20rpx;
+}
+.noTxt{
+  color:#d2b576;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight:bolder;
+}
+.mycanvas{
+ height:60rpx;
+ width:450rpx;
+}
+.headImgView{
+  
+  height:60rpx;
+  width:75rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+
+#endView{
+  background-color:white;
+  height: 100rpx;
+  width:100%;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+#endTxt{
+  color:#696969;
+  font-size: small;
+}

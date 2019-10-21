@@ -180,7 +180,7 @@ Page({
   selectInfo: function (e) {
 
     var item = e.currentTarget.dataset.bean
-    console.log(item)
+    //console.log(item)
     var serverName = this.data.serverName
     wx.navigateTo({
       url: '/pages/home/newInfo?serverName=' + serverName+"&updateTime="+item.dayStr,
@@ -245,8 +245,8 @@ Page({
   countDayInterval: function (daystr1) {
     //var daystr1 = this.data.info_alliance.updateDay
     var daystr2 = new Date()
-    console.log(daystr1)
-    console.log(daystr2)
+    //console.log(daystr1)
+    //console.log(daystr2)
     var t1 = new Date(daystr1)
     var t2 = new Date()
     //转成毫秒数，两个日期相减

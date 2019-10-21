@@ -1,0 +1,41 @@
+<view>
+  <view class="topNoticeView">
+  
+    <image id="topNoticeImg" src="../../images/count.png"></image>
+    <text class="topNoticeTxt">对特定物资临时统计 数据更真实</text>
+  </view>
+
+  <view class="listView">
+    <view class="specialItem" wx:for="{{onShowData}}" data-bean="{{index}}" bindtap="clickItem">
+      <view class="topItemView">
+        <view class="topLView">
+          <text class="listTxt">{{item.list}}</text>
+        </view>
+        <view class="topRView">
+          <text class="timeTxt">{{item.timeStr}}</text>
+        </view>
+      </view>
+      <view class="midItemView">
+        <view class="midLView">
+        
+          <image class="specialIcon" src='{{item.icon}}'></image>
+          
+        </view>
+        <view class="midRView">
+          <text class="specialTxt">{{item.topic}}</text>
+        </view>
+             
+      </view>
+      <view class="bottomItemView">
+        <view class="bottomLView">
+        
+          <image class="starIcon" src='../../images/star.png'></image>
+          
+        </view>
+        <view class="bottomRView">
+          <text class="no1name">{{item.no1name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
