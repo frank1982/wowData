@@ -382,16 +382,26 @@ page {
 #leftMenuView{
 
   height:100rpx;
-  width:50%;
+  width:250rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   /*垂直水平居中*/
 }
+#midMenuView{
+
+  height:100rpx;
+  width:250rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  /*垂直水平居中*/
 #rightMenuView{
   height:100rpx;
-  width:50%;
+  width:250rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -402,7 +412,14 @@ page {
   height:43rpx;
   width:152rpx;
 }
+#batImg{
+  height:43rpx;
+  width:152rpx;
+}
 #specialImg{
   height:43rpx;
   width:152rpx;
+}
+.adView{
+  margin-top: 20rpx;
 }

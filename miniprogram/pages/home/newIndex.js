@@ -1,6 +1,6 @@
 // pages/home/index.js
 //插屏广告
-//let interstitialAd = null
+let interstitialAd = null
 const app = getApp();
 Page({
 
@@ -14,6 +14,7 @@ Page({
     detailWords2:"",
     serversCount: "",
     openDays: "",
+    isCoverShow:false,
     //isAdShow:true,//如果默认false canvas 错位！
     //heartsList:[],
     btnList: [
@@ -53,7 +54,11 @@ Page({
     var time = parseInt(days / (1000 * 60 * 60 * 24));
     return time
   },
-
+  clickBottom2:function(){
+    wx.navigateTo({
+      url:'bat'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -99,7 +104,19 @@ Page({
         console.log(res)
       }
     })
-    
+    // 在页面onLoad回调事件中创建插屏广告实例
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-2c50af1d54821639'
+      })
+      interstitialAd.onLoad(() => {
+        console.log('onLoad event emit')
+      })
+      //捕捉错误
+      interstitialAd.onError(err => {
+        console.log(err);
+      })
+    }
   },
 
   initBtns: function (no) {
@@ -131,6 +148,7 @@ Page({
       server["serverName"] = results[i].serverName
       server["goods_alliance"] = results[i].goods_alliance
       server["goods_horde"] = results[i].goods_horde
+      server['bat'] = results[i].bat
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
       server["rate"] = (results[i].goods_alliance / results[i].goods_horde)
       var dotime = results[i].dotime
@@ -314,7 +332,8 @@ Page({
           that.drawBar();
           that.setData({
             loadingShow: true,
-            serversCount: results.length
+            serversCount: results.length,
+            isCoverShow:true,
           })
 
         }, 400);
@@ -366,6 +385,12 @@ Page({
       bottomImg0: "../../images/index1.png",
       bottomImg1: "../../images/special0.png",
     })
+    // 在适合的场景显示插屏广告
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   },
 
   /**

@@ -1,0 +1,46 @@
+<cover-view id="alertBg" wx:if="{{isShow}}">
+  <cover-view id="box">
+     <cover-view id="boxstr">{{boxStr}}</cover-view>
+     <cover-view id="boxbtn" bindtap="clickPlay">观看视频后进入</cover-view>
+     <cover-view id="boxtxt">{{boxtxt}}</cover-view>
+  </cover-view>
+  <cover-image src="../../images/g.png" id="boxImg"></cover-image>
+  <cover-image src="../../images/close.png" id="closeBtn" bindtap="clickClose"></cover-image>
+</cover-view>
+
+ 
+ 
+ 
+  <cover-view id="btnArea" wx:if="{{isCoverShow}}">
+    <cover-view class="btn" data-bean="0" bindtap="clickBtn">物资</cover-view>
+    <cover-view class="btn" data-bean="1" bindtap="clickBtn">联盟</cover-view>
+    <cover-view class="btn" data-bean="2" bindtap="clickBtn">部落</cover-view>
+    <cover-view class="btn" data-bean="3" bindtap="clickBtn">比例</cover-view>
+  </cover-view>
+<view id="container">
+
+  
+  <view wx:for="{{serversOnShow}}" class="itemView">
+    <view class="oneView">
+      <view class="noTxt">{{index+1}}</view>
+      <view class="serverName">{{item.serverName}}</view>
+      
+      <view class="rate">{{item.rateNum}}</view>
+      
+    </view>
+    <canvas class="mycanvas" canvas-id="{{canvasList[index]}}"></canvas>
+
+  </view>
+  <view class="end">到底啦</view>
+</view>
+
+<cover-view wx:if="{{isCoverShow}}" id="bottomView">
+  <cover-view class="look" data-bean="a" bindtap="clickLookBtn">
+    <cover-image class="icon" src="../../images/graph1.png"></cover-image>
+    <cover-view class="iconTxt" id="txt0">联盟阵容</cover-view>
+  </cover-view>
+  <cover-view class="look" data-bean="h" bindtap="clickLookBtn">
+    <cover-image class="icon" src="../../images/graph0.png"></cover-image>
+    <cover-view class="iconTxt" id="txt1">部落阵容</cover-view>
+  </cover-view>
+</cover-view>

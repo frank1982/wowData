@@ -136,3 +136,6 @@ page {
   height:500rpx;
   background-color: white;
 }
+.adView{
+  margin-top: 20rpx;
+}

@@ -144,3 +144,6 @@ page {
 .no1name{
   font-size: small
 }
+.adView{
+  margin-top: 20rpx;
+}

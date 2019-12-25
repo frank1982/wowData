@@ -98,6 +98,7 @@ exports.main = async (event, context) => {
     var tmp = {}
     console.log(result.data[i])
     tmp["serverName"]=result.data[i]._id
+    tmp['bat']=result.data[i].bat
     var dts = result.data[i].data
     var l = Math.min(10,dts.length)
     var sum_goods_alliance = 0

@@ -1,6 +1,6 @@
 // pages/home/index.js
-//插屏广告
-//let interstitialAd = null
+// 在页面中定义插屏广告
+let interstitialAd = null
 const app = getApp();
 Page({
 
@@ -11,8 +11,10 @@ Page({
     loadingShow: false,
     pv: 0,
     indexWord: "",
+    detailWords2:"",
     serversCount: "",
-    openDays:"",
+    openDays: "",
+    isCoverShow: false,
     //isAdShow:true,//如果默认false canvas 错位！
     //heartsList:[],
     btnList: [
@@ -36,18 +38,26 @@ Page({
         bgColor: "#696969",
         btnNo: 3,
       },
-    ], 
+    ],
     btnSelected: 0,
     serverInfoOnShow: [],
-    canvas_ids: []
+    canvas_ids: [],
+    bottomImg0:"",
+    bottomImg1: "",
+    bottomItemSelected:-1,
   },
-  countDays:function(){
+  countDays: function () {
     var s1 = '2019-08-26';
     s1 = new Date(s1.replace(/-/g, "/"));
     var s2 = new Date();//当前日期：2017-04-24
     var days = s2.getTime() - s1.getTime();
     var time = parseInt(days / (1000 * 60 * 60 * 24));
     return time
+  },
+  clickBottom2:function(){
+    wx.navigateTo({
+      url:'bat'
+    })
   },
 
   /**
@@ -56,121 +66,63 @@ Page({
   onLoad: function (options) {
 
     console.log("onload")
+
+    
     var d = this.countDays()
     this.setData({
-      openDays:this.countDays()
+      openDays: this.countDays(),
     })
 
     const db = wx.cloud.database()
-  
+
     db.collection('words')
-    .get()
-    .then(res => {
-
-      //console.log(res.data)
-      var indexWord = res.data[0].content
-      var pv = res.data[1].pv
-      var detailWords = res.data[5].content
-      console.log(detailWords)
-      app.globalData.detailWords = detailWords
-      //console.log(indexWord)
-      //console.log(pv)
-      this.setData({
-        pv: pv,
-        indexWord: indexWord,
-      })
-
-      
-    
-    })
-
-    const _ = db.command
-      db.collection('words').doc('pvs').update({
-        data: {
-          pv: _.inc(1)
-        },
-        success: function (res) {
-          console.log("success inc")
-          console.log(res)
-        },
-        fail: console.error
-      })
-
-    //pv + 1
-    //const db = wx.cloud.database()
-    
-
-
-    /*
-    const db = wx.cloud.database()
-    db.collection('words').where({
-      _id: "pvs"
-    })
-    .get()
-    .then(res => {
-      //console.log(res.data[0].pv)
-      this.setData({
-        pv: res.data[0].pv,
-      })
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'updatePv',
-        // 传给云函数的参数
-        data: {
-          pvnum: res.data[0].pv + 1
-        },
-        success: function (res) {
-          //console.log(res)
-        },
-        fail: console.error
-      })
-    })
-    
-    //const db = wx.cloud.database()
-    db.collection('words').where({
-      _id: "isAdShow"
-    })
       .get()
       .then(res => {
-        //console.log(res.data[0].status)
+
+        //console.log(res.data)
+        var indexWord = res.data[0].content
+        var pv = res.data[1].pv
+        var detailWords = res.data[5].content
+        var detailWords2 = res.data[6].content
+        console.log(detailWords)
+        app.globalData.detailWords = detailWords
+        //console.log(indexWord)
+        console.log(pv)
         this.setData({
-          isAdShow: res.data[0].status,
-        })
-        //先判断广告位配置
-
-        db.collection('words').where({
-          _id: "indexWord"
-        })
-          .get()
-          .then(res => {
-            //console.log(res.data[0].content)
-            this.setData({
-              indexWord: res.data[0].content,
-            })
+          pv: pv,
+          indexWord: indexWord,
+          detailWords2: detailWords2,
         })
 
-        
       })
-      */
 
-    /*  
-    var that = this
     wx.cloud.callFunction({
       // 需调用的云函数名
-      //name: 'getAllPopRecords',
-      name: 'getHearts',
+      name: 'updatePv',
       // 成功回调
       complete: res => {
-        //console.log('callFunction test result: ', res.result)
-        var results = res.result.data
-        that.setData({
-          heartsList: results
-        })
+        
+        console.log(res)
       }
     })
-    */  
+
+    // 在页面onLoad回调事件中创建插屏广告实例
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-2c50af1d54821639'
+      })
+      interstitialAd.onLoad(() => {
+        console.log('onLoad event emit')
+      })
+      //捕捉错误
+      interstitialAd.onError(err => {
+        console.log(err);
+      })
+    }
+
+    
   },
- 
+
   initBtns: function (no) {
     var tmp = this.data.btnList
     for (var i = 0; i < tmp.length; i++) {
@@ -197,7 +149,7 @@ Page({
       //console.log(results[i])
       totalGoods_alliance += results[i].goods_alliance
       totalGoods_horde += results[i].goods_horde
-      server["serverName"] = results[i]._id
+      server["serverName"] = results[i].serverName
       server["goods_alliance"] = results[i].goods_alliance
       server["goods_horde"] = results[i].goods_horde
       server["totalGoods"] = results[i].goods_alliance + results[i].goods_horde
@@ -207,7 +159,7 @@ Page({
       var isNew = false
       if (this.countDayInterval(dotime) <= 0) {
         isNew = true
-      } 
+      }
       server["isNew"] = isNew
 
       /*
@@ -230,10 +182,10 @@ Page({
           numStr = numStr.substr(0, numStr.length - 2)
         }
         server["rateNum"] = numStr + ":1"
-      } else if (server["rate"] >= 10){
-        server["rateNum"] = "10+:1" 
-      } else if (server["rate"] < 1 && server["rate"] > 0.1){
-        
+      } else if (server["rate"] >= 10) {
+        server["rateNum"] = "10+:1"
+      } else if (server["rate"] < 1 && server["rate"] > 0.1) {
+
         server["rate"] = server["rate"].toFixed(2)
         var x = (1 / server["rate"]).toFixed(1)
         //处理下 3.0的情况
@@ -252,7 +204,7 @@ Page({
 
       end.push(server)
       //计算显示出来的比例值
-      canvasList[i] = i+1
+      canvasList[i] = i + 1
     }
 
     //找出总人口最多的数据，作为分母
@@ -278,15 +230,15 @@ Page({
     var share_alliance = (totalGoods_alliance / totalGoods * 100).toFixed(0)
 
     this.setData({
-      
+
       totalCount: {
         share_alliance: share_alliance,
         share_horde: 100 - share_alliance,
         totalGoods: totalGoods,
       },
-      canvas_ids:canvasList,
+      canvas_ids: canvasList,
     })
-    
+
     //默认按总人口排序
     for (var wai = 0; wai < end.length - 1; wai++) {
 
@@ -301,32 +253,33 @@ Page({
         }
 
       }
-      
+
     }
-    
+
 
     //默认按总人口排序
     this.setData({
       serverInfoOnShow: end,
     });
     //console.log(this.data.canvas_ids)
-   
+
   },
-  selectServer:function(e){
+  selectServer: function (e) {
     var item = e.currentTarget.dataset.bean
     //console.log(item)
     var serverName = item.serverName
     var goods_alliance = item.goods_alliance
     var goods_horde = item.goods_horde
-    var dotime = item.dotime
+    //var dotime = item.dotime
 
-    
+
     wx.navigateTo({
 
-      url: '/pages/home/detail?serverName=' + serverName + "&goodA=" + goods_alliance+"&goodH="+goods_horde+"&dotime="+dotime,
+      //url: '/pages/home/newDetail?serverName=' + serverName + "&goodA=" + goods_alliance + "&goodH=" + goods_horde + "&dotime=" + dotime,
+      url: '/pages/home/newDetail?serverName=' + serverName + "&goodA=" + goods_alliance + "&goodH=" + goods_horde,
 
     })
-    
+
   },
   drawTotalBar: function () {
     var onerpx_px = wx.getSystemInfoSync().windowWidth / 750;
@@ -345,24 +298,51 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  loadAd:function(){
+  loadAd: function () {
     console.log("load ad success")
     //this.loadBars();
   },
-  loadAdError:function(e){
+  loadAdError: function (e) {
     console.log("load ad error")
     console.log(e)
     //刷新当前页面的数据
     //getCurrentPages()[getCurrentPages().length - 1].onLoad()
   },
-  loadClose:function(){},
-  loadImg:function(){
+  loadClose: function () { },
+  loadImg: function () {
     console.log("load img")
-    //this.loadBars();
+    
   },
-  loadBars:function(){
-
+  loadBars: function () {
+    
     console.log("loadBars")
+    wx.cloud.callFunction({
+      // 需调用的云函数名
+      //name: 'getAllPopRecords',
+      name: 'getNewGoods',
+      // 成功回调
+      complete: res => {
+        
+        var results = res.result
+        //console.log(results)
+        console.log("共 " + results.length + " 条服务器goods信息")
+        var that = this
+        setTimeout(function () {
+
+          that.initBtns(0)
+          that.initServerInfo(results)
+          that.drawTotalBar();
+          that.drawBar();
+          that.setData({
+            loadingShow: true,
+            serversCount: results.length,
+            isCoverShow: true,
+          })
+
+        }, 400);
+      }
+    })
+    /*
     wx.cloud.callFunction({
       // 需调用的云函数名
       //name: 'getAllPopRecords',
@@ -376,6 +356,7 @@ Page({
         //console.log("共 " + results.length + " 条服务器goods信息")
         var that = this
         setTimeout(function () {
+
           that.initBtns(0)
           that.initServerInfo(results)
           that.drawTotalBar();
@@ -384,26 +365,12 @@ Page({
             loadingShow: true,
             serversCount: results.length
           })
-          
-        }, 400);
 
-        /*
-        if (wx.createInterstitialAd) {
-          interstitialAd = wx.createInterstitialAd({
-            adUnitId: 'adunit-2c50af1d54821639'
-          })
-          interstitialAd.onLoad(() => { })
-          interstitialAd.onError((err) => { })
-          interstitialAd.onClose(() => { })}
-          if (interstitialAd) {
-            interstitialAd.show().catch((err) => {
-            console.error(err)
-          })
-        }
-        */
+        }, 400);
 
       },
     })
+    */
   },
   onReady: function () {
 
@@ -416,6 +383,17 @@ Page({
    */
   onShow: function () {
     console.log("onShow")
+    this.setData({
+      bottomItemSelected: 0,
+      bottomImg0: "../../images/index1.png",
+      bottomImg1: "../../images/special0.png",
+    })
+    // 在适合的场景显示插屏广告
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   },
 
   /**
@@ -468,9 +446,9 @@ Page({
       //console.log(bar_alliance)
       var ctx = wx.createCanvasContext(canvasId)
       this.roundRect(ctx, 0, 0, FullW * bar_alliance, H, r, '#0079FF')
-      
+
       this.roundRect(ctx, FullW * bar_alliance, 0, FullW * bar_horde, H, r, '#D50000')
- 
+
       ctx.draw();
     }
   },
@@ -645,4 +623,36 @@ Page({
     var day = parseInt(ms / (1000 * 60 * 60 * 24));
     return day
   },
+  clickBottom0:function(){
+
+    console.log("click index")
+    if (this.data.bottomItemSelected != 0){
+
+      this.setData({
+        bottomItemSelected:0,
+        bottomImg0: "../../images/index1.png",
+        bottomImg1: "../../images/special0.png",
+      })
+    }
+  },
+  clickBottom1: function () {
+
+    console.log("click special")
+    if (this.data.bottomItemSelected != 1) {
+
+      this.setData({
+        bottomItemSelected: 1,
+        bottomImg0: "../../images/index0.png",
+        bottomImg1: "../../images/special1.png",
+      })
+
+      wx.navigateTo({
+
+        url: '/pages/home/newSpecial',
+
+      })
+    }
+
+
+  }
 })

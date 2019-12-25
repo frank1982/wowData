@@ -1,0 +1,17 @@
+#title{
+  color:#d2b576;
+  margin-top: 50rpx;
+  width:100%;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.container{
+  width: 100%;
+  height: 600rpx
+}
+#column-dom{
+  width: 100%;
+  height: 600rpx
+}

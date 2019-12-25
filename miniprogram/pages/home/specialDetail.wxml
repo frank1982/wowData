@@ -37,6 +37,11 @@
     </view>
     
   </view>  
+
+  <view class="adView">
+    <ad unit-id="adunit-0189e8eff9ede079" ad-type="video" ad-theme="white"></ad>
+  </view>
+
   <view id="endView">
     <text id="endTxt">到底啦</text>
   </view>

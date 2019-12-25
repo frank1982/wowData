@@ -90,7 +90,7 @@
       </view>
       -->
       <view id="leftView">
-        <text id="txtServerName">{{item.serverName}} {{item.bat}}</text>
+        <text id="txtServerName">{{item.serverName}}</text>
       
       <image wx:if="{{item.isNew}}" src="../../images/new.png" class="newIconImg" ></image>
       </view>
@@ -121,11 +121,6 @@
     </view>
   </view>
 </view>
-
-  <view class="adView">
-    <ad unit-id="adunit-0189e8eff9ede079" ad-type="video" ad-theme="white"></ad>
-  </view>
-
    <view id="endView">
     <text id="endTxt">到底啦</text>
   </view>
@@ -134,15 +129,12 @@
     加载中...
   </loading>  
 
-   <cover-view class="bottomMenuView" wx:if="{{isCoverShow}}">
+  <cover-view class="bottomMenuView">
     <cover-view id="leftMenuView" bindtap="clickBottom0">
-      <cover-image id="indexImg" src='../../images/index1.png'></cover-image>
-    </cover-view>
-    <cover-view id="midMenuView" bindtap="clickBottom2">
-      <cover-image id="batImg" src='../../images/bat1.png'></cover-image>
+      <cover-image id="indexImg" wx:if='{{bottomImg0}}' src='{{bottomImg0}}'></cover-image>
     </cover-view>
     <cover-view id="rightMenuView" bindtap="clickBottom1">
-       <cover-image id="specialImg" src='../../images/special1.png'></cover-image>
+       <cover-image id="specialImg" wx:if='{{bottomImg1}}' src='{{bottomImg1}}'></cover-image>
    
     </cover-view>
   </cover-view>

@@ -1,0 +1,130 @@
+
+ <view id="countTotalView">
+    <view id="ahTitleView">
+      <view id="ahLeftView">1区1组</view>
+      <view id="ahRightView">服务器 {{info[0].count}} 组</view>
+    </view>
+    <view class="campView">
+      <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='1000'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[0].ashare}}%</view>
+    </view>
+  </view>
+  
+  <view class="campView">
+    <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='1001'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[0].hshare}}%</view>
+    </view>
+  
+  </view>
+  </view>
+  <view class="btn" bindtap="click0">查看</view>
+
+
+  <view id="countTotalView">
+    <view id="ahTitleView">
+      <view id="ahLeftView">1区2组</view>
+      <view id="ahRightView">服务器 {{info[1].count}} 组</view>
+    </view>
+    <view class="campView">
+      <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='2000'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[1].ashare}}%</view>
+    </view>
+  </view>
+  <view class="campView">
+    <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='2001'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[1].hshare}}%</view>
+    </view>
+  
+  </view> 
+  </view>
+  <view class="btn" bindtap="click1">查看</view>
+
+
+  <view id="countTotalView">
+    <view id="ahTitleView">
+      <view id="ahLeftView">5区1组</view>
+      <view id="ahRightView">服务器  {{info[2].count}} 组</view>
+    </view>
+    <view class="campView">
+      <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='3000'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[2].ashare}}%</view>
+    </view>
+  </view>
+  <view class="campView">
+    <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='3001'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[2].hshare}}%</view>
+    </view>
+  
+  </view>
+  </view>
+  <view class="btn" bindtap="click2">查看</view>   
+
+
+  <view id="countTotalView">
+    <view id="ahTitleView">
+      <view id="ahLeftView">5区2组</view>
+      <view id="ahRightView">服务器 {{info[3].count}} 组</view>
+    </view>
+    <view class="campView">
+      <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='4000'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[3].ashare}}%</view>
+    </view>
+  </view>
+  <view class="campView">
+    <view class="ahCanvasView">
+         <view class="headImgView">
+          <image class="headImg" src="../../images/ah.png"></image>
+         </view>
+         <canvas class="ahCanvas" canvas-id='4001'></canvas>
+    </view> 
+    <view class="ahShareView">
+         <view class="ahShareTxt">{{info[3].hshare}}%</view>
+    </view>
+  
+  </view>
+  </view>
+  <view class="btn" bindtap='click3'>查看</view>
+  <button open-type="contact" bindcontact="handleContact" id="us">反馈分组问题</button>
+  <view class="end"></view>

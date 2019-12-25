@@ -1,0 +1,115 @@
+#countTotalView{
+  height:280rpx;
+  width:100%;
+  background-color: white;
+  margin-top: 20rpx;
+}
+#ahTitleView{
+  height:100rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  
+}
+#ahLeftView{
+  height:100rpx;
+  width:50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25rpx;
+  color:#696969;
+}
+#ahRightView{
+  height:100rpx;
+  width:50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25rpx;
+  color:#696969;
+}
+.campView{
+  height:80rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.ahCanvasView{
+  height:80rpx;
+  width:550rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25rpx;
+  /*子视图垂直水平左对齐*/
+}
+.headImgView{
+  height:60rpx;
+  width:75rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*子视图垂直水平居中*/
+}
+.headImg{
+  height:45rpx;
+  width:45rpx;
+}
+.ahCanvas{
+  height:60rpx;
+  width:450rpx;
+}
+.ahShareView{
+  height:80rpx;
+  width:200rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  /*子视图右对齐*/
+  /*子视图垂直水平居中*/
+  
+}
+.ahShareTxt{
+  border-radius: 6rpx;
+  background-color: #051041;
+  height:60rpx;
+  width:125rpx;
+  color:#d2b576;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20rpx;
+  margin-right: 25rpx;
+}
+.btn{
+  margin-top: 20rpx;
+  width:710rpx;
+  color:#d2b576;
+  text-align: center;
+  height:80rpx;
+  line-height: 80rpx;
+  background: #051041;
+  margin-left: 20rpx;
+  border-radius: 6rpx;
+}
+#us{
+  margin-top: 40rpx;
+  background: white;
+  width:710rpx;
+  margin-left: 20rpx;
+}
+.end{
+  
+  width:100%;
+  height:200rpx;
+  color:#696969;
+  text-align:center;
+  line-height:150rpx;
+}

@@ -13,7 +13,9 @@
     <image id="img1" src='{{img1}}' model="aspectFit" bindload="imageLoad1" ></image>
 
   </view>
-
+  <view class="adView">
+    <ad unit-id="adunit-0189e8eff9ede079" ad-type="video" ad-theme="white"></ad>
+  </view>
   <loading hidden="{{loadingShow}}">
   加载中...
 </loading> 

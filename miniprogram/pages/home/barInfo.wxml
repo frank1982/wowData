@@ -1,0 +1,7 @@
+<view id="title">{{title}}</view>
+<view class="container">
+    <ff-canvas id="column-dom" canvas-id="column" opts="{{opts}}"></ff-canvas>
+</view>
+<view style="width:100%;margin-top:20rpx;">
+<ad unit-id="adunit-893aa4510cf91a73" ad-type="video" ad-theme="white"></ad>
+</view>

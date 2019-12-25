@@ -178,3 +178,6 @@ page {
   color:#696969;
   font-size: small;
 }
+.adView{
+  margin-top: 20rpx;
+}

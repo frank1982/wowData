@@ -52,3 +52,6 @@ page {
   border-style: solid;
   margin-left: 25rpx;
 }
+.adView{
+  margin-top: 20rpx;
+}
